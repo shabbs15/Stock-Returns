@@ -11,9 +11,9 @@ _Input Tickers and Ouput Returns_
 
 1. Run the program
 2. Paste a list of tickers using space or a new line as a delimitter
-3. Press Enter, then CTRL+V, then Enter again to move on
+3. Press Enter, then CTRL+Z, then Enter again to move on
 4. Paste corresponding prices
-5. Press Enter, then CTRL+V, then Enter again to move on
+5. Press Enter, then CTRL+Z, then Enter again to move on
 6. A CSV file should open with the returns
 
 ### Best Use Case
