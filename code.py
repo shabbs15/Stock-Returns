@@ -1,5 +1,6 @@
-import yfinance as yf
 import os
+os.system("pip install yfinance")
+import yfinance as yf
 import datetime
 import sys
 
@@ -11,19 +12,19 @@ f.close()
 oneDay = (datetime.datetime.now() - datetime.timedelta(1)).strftime('%Y-%m-%d')
 oneWeek = (datetime.datetime.now() - datetime.timedelta(7)).strftime('%Y-%m-%d')
 
-oneMonth = (datetime.datetime.now() - datetime.timedelta(30)).strftime('%Y-%m-%d')
+oneMonth = (datetime.datetime.now() - datetime.timedelta(25)).strftime('%Y-%m-%d')
 oneMonthUp = (datetime.datetime.now() - datetime.timedelta(31)).strftime('%Y-%m-%d')
 
-threeMonth = (datetime.datetime.now() - datetime.timedelta(90)).strftime('%Y-%m-%d')
+threeMonth = (datetime.datetime.now() - datetime.timedelta(85)).strftime('%Y-%m-%d')
 threeMonthUp = (datetime.datetime.now() - datetime.timedelta(91)).strftime('%Y-%m-%d')
 
-oneYear = (datetime.datetime.now() - datetime.timedelta(365)).strftime('%Y-%m-%d')
+oneYear = (datetime.datetime.now() - datetime.timedelta(360)).strftime('%Y-%m-%d')
 oneYearUp = (datetime.datetime.now() - datetime.timedelta(366)).strftime('%Y-%m-%d')
-
+#for one month ... one year, it's about 6 days behind
+#in case the day is a weekend, or thanksgiiving or some other crazy combo that causes markets to be closed
 
 print("Paste Tickers")
 tickers = sys.stdin.read()
-
 print("Paste Prices")
 prices = sys.stdin.read()
 
@@ -34,12 +35,10 @@ for index, itTicker in enumerate(tickers.split()):
     priceToday = float(prices.split()[index])
 
     oneDayVal = realTicker.history(period = "2d",actions = False).values.tolist()[0][3]
-    oneWeekVal = realTicker.history(period = "7d",actions = False).values.tolist()[1][3]
-
+    oneWeekVal = realTicker.history(period = "7d",actions = False).values.tolist()[0][3]
     oneMonthVal = realTicker.history(start = oneMonthUp, end = oneMonth, actions = False).values.tolist()
     threeMonthVal = realTicker.history(start = threeMonthUp, end = threeMonth, actions = False).values.tolist()
     oneYearVal = realTicker.history(start = oneYearUp, end = oneYear, actions = False).values.tolist()
-
 
     oneMonthVal = oneMonthVal[0][3]
     threeMonthVal = threeMonthVal[0][3]
